@@ -349,7 +349,6 @@ Thus, the program was implemented and executed successfully, and the required ou
 ---
 #include <stdio.h>
 
-// Function prototype
 void displayArray(int *arr, int size);
 
 int main() {
