@@ -39,7 +39,46 @@
 ### Step 12: 
   Stop
 # Program:
+---
+#include <stdio.h>
+
+
+void swapv(int x, int y) {
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+    printf("Inside swapv (Call by Value): a = %d, b = %d\n", x, y);
+}
+
+
+void swapr(int *x, int *y) {
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+    printf("Inside swapr (Call by Reference): a = %d, b = %d\n", *x, *y);
+}
+
+int main() {
+    int a = 10, b = 20;
+
+    
+    printf("Before swapv: a = %d, b = %d\n", a, b);
+    swapv(a, b);
+    printf("After swapv: a = %d, b = %d\n\n", a, b);
+
+  
+    printf("Before swapr: a = %d, b = %d\n", a, b);
+    swapr(&a, &b);
+    printf("After swapr: a = %d, b = %d\n", a, b);
+
+    return 0;
+}
+
 # Output:
+
+![alt text](c21.png)
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -77,7 +116,31 @@
 ### Step 10:
   Stop
 # Program:
+---
+int main() {
+    int n, i;
+
+    
+    printf("Enter the number of terms for Fibonacci series: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+        return 0;
+    }
+
+    printf("Fibonacci series of %d terms:\n", n);
+    for (i = 0; i < n; i++) {
+        printf("%d ", fibo(i));
+    }
+
+    printf("\n");
+    return 0;
+}
+
 # Output:
+
+![alt text](c22.png)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -119,7 +182,50 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+---
+#include <stdio.h>
+
+void printEvenOdd(int cur, int limit) {
+    if (cur > limit) {
+        // Terminate recursion
+        return;
+    } else if (cur == limit) {
+        // Last number, no trailing comma
+        printf("%d", cur);
+    } else {
+        // Print current number followed by comma
+        printf("%d, ", cur);
+    }
+    // Recursive call with step of 2
+    printEvenOdd(cur + 2, limit);
+}
+
+int main() {
+    int lowerLimit, upperLimit;
+
+    // Input lower limit
+    printf("Enter the lower limit: ");
+    scanf("%d", &lowerLimit);
+
+    // Input upper limit
+    printf("Enter the upper limit: ");
+    scanf("%d", &upperLimit);
+
+    if (lowerLimit > upperLimit) {
+        printf("Invalid range. Lower limit should be less than or equal to upper limit.\n");
+        return 0;
+    }
+
+    printf("The sequence is:\n");
+    printEvenOdd(lowerLimit, upperLimit);
+    printf("\n");
+
+    return 0;
+}
+
 # Output:
+
+![alt text](c23.png)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -161,7 +267,50 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+---
+#include <stdio.h>
+#include <stdlib.h> // Required for calloc() and free()
+
+int main() {
+    int *ptr;       // Pointer for dynamic memory
+    int n, i, sum = 0;
+
+    // Read the number of integers
+    printf("Enter the number of integers: ");
+    scanf("%d", &n);
+
+    // Allocate memory for n integers using calloc
+    ptr = (int *)calloc(n, sizeof(int));
+
+    // Check if memory allocation was successful
+    if (ptr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    // Read integers from the user
+    printf("Enter %d integers:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", ptr + i);
+    }
+
+    // Compute the sum
+    for (i = 0; i < n; i++) {
+        sum += *(ptr + i);
+    }
+
+    // Print the sum
+    printf("Sum of the entered integers: %d\n", sum);
+
+    // Free the allocated memory
+    free(ptr);
+
+    return 0;
+}
+
 # Output:
+
+![alt text](c24.png)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -197,6 +346,40 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+---
+#include <stdio.h>
+
+// Function prototype
+void displayArray(int *arr, int size);
+
+int main() {
+    int arr[5];  // Array of size 5
+    int i;
+
+    // Input elements from the user
+    printf("Enter 5 integers:\n");
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Call the user-defined function to display the array
+    printf("The elements of the array are:\n");
+    displayArray(arr, 5);
+
+    return 0;
+}
+
+// Function to display array elements
+void displayArray(int *arr, int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        printf("%d ", *(arr + i));  // Using pointer arithmetic
+    }
+    printf("\n");
+}
+
 # Output:
+
+![alt text](c25.png)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
